@@ -22,78 +22,78 @@ type KnowledgeStep = {
 const KnowledgeConnections = () => {
   const [step, setStep] = useState(0);
 
-  const knowledgeSteps = [
+  const knowledgeSteps: KnowledgeStep[] = [
     {
       nodes: [
-        { id: 1, x: 150, y: 150, text: "Eiffel Tower", type: "fact" },
-        { id: 2, x: 400, y: 150, text: "324 meters", type: "fact" },
+        { id: 1, x: 150, y: 150, text: "Eiffel Tower", type: ConnectionType.Fact },
+        { id: 2, x: 400, y: 150, text: "324 meters", type: ConnectionType.Fact },
       ],
       connections: [
-        { from: 1, to: 2, type: "fact" }
+        { from: 1, to: 2, type: ConnectionType.Fact }
       ] as Connection[],
       explanation: "The LLM starts with core facts it's completely certain about - like the Eiffel Tower's height of 324 meters.",
       whyHallucination: "At this stage, there's no hallucination because the model is only using its most confident knowledge - facts that appear consistently across its training data."
     },
     {
       nodes: [
-        { id: 1, x: 150, y: 150, text: "Eiffel Tower", type: "fact" },
-        { id: 2, x: 400, y: 150, text: "324 meters", type: "fact" },
-        { id: 3, x: 150, y: 300, text: "Iron structure", type: "fact" },
-        { id: 4, x: 400, y: 300, text: "Needs painting", type: "fact" },
+        { id: 1, x: 150, y: 150, text: "Eiffel Tower", type: ConnectionType.Fact },
+        { id: 2, x: 400, y: 150, text: "324 meters", type: ConnectionType.Fact },
+        { id: 3, x: 150, y: 300, text: "Iron structure", type: ConnectionType.Fact },
+        { id: 4, x: 400, y: 300, text: "Needs painting", type: ConnectionType.Fact },
       ],
       connections: [
-        { from: 1, to: 2, type: "fact" },
-        { from: 1, to: 3, type: "fact" },
-        { from: 3, to: 4, type: "fact" }
+        { from: 1, to: 2, type: ConnectionType.Fact },
+        { from: 1, to: 3, type: ConnectionType.Fact },
+        { from: 3, to: 4, type: ConnectionType.Fact }
       ]as Connection[],
       explanation: "It then connects other verified facts - the tower is made of iron and requires regular painting.",
       whyHallucination: "The model is still working with verified information, but it's starting to make connections between facts. This is where hallucinations can begin if the model makes incorrect associations between otherwise true facts."
     },
     {
       nodes: [
-        { id: 1, x: 150, y: 150, text: "Eiffel Tower", type: "fact" },
-        { id: 2, x: 400, y: 150, text: "324 meters", type: "fact" },
-        { id: 3, x: 150, y: 300, text: "Iron structure", type: "fact" },
-        { id: 4, x: 400, y: 300, text: "Needs painting", type: "fact" },
-        { id: 5, x: 650, y: 300, text: "50 tons paint", type: "partial" }
+        { id: 1, x: 150, y: 150, text: "Eiffel Tower", type: ConnectionType.Fact },
+        { id: 2, x: 400, y: 150, text: "324 meters", type: ConnectionType.Fact },
+        { id: 3, x: 150, y: 300, text: "Iron structure", type: ConnectionType.Fact },
+        { id: 4, x: 400, y: 300, text: "Needs painting", type: ConnectionType.Fact },
+        { id: 5, x: 650, y: 300, text: "50 tons paint", type: ConnectionType.Partial }
       ],
       connections: [
-        { from: 1, to: 2, type: "fact" },
-        { from: 1, to: 3, type: "fact" },
-        { from: 3, to: 4, type: "fact" },
-        { from: 4, to: 5, type: "partial" }
+        { from: 1, to: 2, type: ConnectionType.Fact },
+        { from: 1, to: 3, type: ConnectionType.Fact },
+        { from: 3, to: 4, type: ConnectionType.Fact },
+        { from: 4, to: 5, type: ConnectionType.Partial }
       ] as Connection[],
       explanation: "When asked about specific details like paint quantity, it connects to less certain information it's seen in training.",
       whyHallucination: "Hallucinations often start here because the model is trying to be helpful by providing specific details. It might have seen various numbers in its training data but can't verify which is current. Like a human trying to remember exact numbers from a book they read long ago, the model might mix up or combine different pieces of information."
     },
     {
       nodes: [
-        { id: 1, x: 150, y: 150, text: "Eiffel Tower", type: "fact" },
-        { id: 2, x: 400, y: 150, text: "324 meters", type: "fact" },
-        { id: 3, x: 150, y: 300, text: "Iron structure", type: "fact" },
-        { id: 4, x: 400, y: 300, text: "Needs painting", type: "fact" },
-        { id: 5, x: 650, y: 300, text: "50 tons paint", type: "partial" },
-        { id: 6, x: 650, y: 150, text: "Every 7 years", type: "hallucination" }
+        { id: 1, x: 150, y: 150, text: "Eiffel Tower", type: ConnectionType.Fact },
+        { id: 2, x: 400, y: 150, text: "324 meters", type: ConnectionType.Fact },
+        { id: 3, x: 150, y: 300, text: "Iron structure", type: ConnectionType.Fact },
+        { id: 4, x: 400, y: 300, text: "Needs painting", type: ConnectionType.Fact },
+        { id: 5, x: 650, y: 300, text: "50 tons paint", type: ConnectionType.Partial},
+        { id: 6, x: 650, y: 150, text: "Every 7 years", type: ConnectionType.Hallucination }
       ],
       connections: [
-        { from: 1, to: 2, type: "fact" },
-        { from: 1, to: 3, type: "fact" },
-        { from: 3, to: 4, type: "fact" },
-        { from: 4, to: 5, type: "partial" },
-        { from: 5, to: 6, type: "hallucination" }
+        { from: 1, to: 2, type: ConnectionType.Fact },
+        { from: 1, to: 3, type: ConnectionType.Fact },
+        { from: 3, to: 4, type: ConnectionType.Fact },
+        { from: 4, to: 5, type: ConnectionType.Partial},
+        { from: 5, to: 6, type: ConnectionType.Hallucination }
       ],
       explanation: "Finally, when trying to complete the pattern about maintenance schedule, it might make up a plausible but incorrect timeframe - this is a hallucination.",
       whyHallucination: "This is where complete hallucinations happen. The model, trying to provide a complete answer, fills in gaps with what seems logical based on patterns it's learned. It's similar to how humans might guess the ending of a story based on typical plot patterns - it might make sense, but it isn't necessarily true."
     }
   ];
 
-  const nodeColors = {
+  const nodeColors: any = {
     [ConnectionType.Fact]: "border-green-500 bg-green-50",
     [ConnectionType.Partial]: "border-yellow-500 bg-yellow-50",
     [ConnectionType.Hallucination]: "border-red-500 bg-red-50"
   };
 
-  const textColors = {
+  const textColors: any = {
     [ConnectionType.Fact]: "text-green-700",
     [ConnectionType.Partial]: "text-yellow-700",
     [ConnectionType.Hallucination]: "text-red-700"
@@ -106,7 +106,7 @@ const KnowledgeConnections = () => {
   };
 
   const renderConnections = () => {
-    return knowledgeSteps[step].connections.map((conn, idx) => {
+    return knowledgeSteps[step].connections.map((conn) => {
       const from = knowledgeSteps[step].nodes.find(n => n.id === conn.from);
       const to = knowledgeSteps[step].nodes.find(n => n.id === conn.to);
       const x = (lineColors as any)[conn.type];
@@ -128,9 +128,9 @@ const KnowledgeConnections = () => {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-white rounded-xl">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-light text-gray-700 p-6">
       <div className="mb-6">
-        <h2 className="text-2xl text-center text-color font-bold mb-4">How and Why LLMs Hallucinate</h2>
+        <h2 className="text-2xl text-center text-color font-bold mb-4">How and Why LLMs Hallucinate?</h2>
         {/*<div className="bg-blue-50 p-4 rounded-lg">
            <h3 className="font-bold mb-2 text-gray-700 flex items-center gap-2">
             <Info className="text-black-700" />
@@ -168,7 +168,7 @@ const KnowledgeConnections = () => {
 
       <div className="space-y-4 bg-light text-gray-700 p-4 rounded-lg mb-6">
         <div>
-          <h4 className="font-bold">What's happening:</h4>
+          <h4 className="font-bold">What&apos;s happening:</h4>
           <p className="text-lg">{knowledgeSteps[step].explanation}</p>
         </div>
         <div>
@@ -177,7 +177,7 @@ const KnowledgeConnections = () => {
         </div>
       </div>
 
-      <div className="flex text-gray-700 justify-between items-center">
+      <div className="flex flex-row text-gray-700 justify-between items-center">
         <button
           onClick={() => setStep(Math.max(0, step - 1))}
           className="px-4 py-2 bg-light rounded disabled:opacity-50"

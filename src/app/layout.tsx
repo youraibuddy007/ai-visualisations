@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, EB_Garamond } from "next/font/google";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -7,7 +8,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = EB_Garamond({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });

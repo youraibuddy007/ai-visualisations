@@ -37,14 +37,14 @@ const PatternRecognitionDemo = () => {
   ];
 
   return (
-    <div className="p-6 w-full max-w-2xl mx-auto bg-white">
-      <div className="space-y-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-light text-gray-700">
+      <div className=" space-y-6">
         {/* Stage display */}
-        <div className="text-center font-bold text-lg text-gray-800">
+        <h2 className="text-2xl text-center text-color font-bold mb-4">
           Stage {step + 1}: {
             ['Initial Scene', 'Edge Detection', 'Feature Analysis', 'Object Recognition'][step]
           }
-        </div>
+        </h2>
 
         {/* Main visualization area */}
         <div className="relative h-96 bg-gray-100 rounded-lg overflow-hidden">

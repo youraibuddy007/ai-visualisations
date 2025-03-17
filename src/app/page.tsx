@@ -1,17 +1,8 @@
+"use client"
 import Link from 'next/link';
-import Head from "next/head";
 
 export default function LandingPage() {
   return (
-    <>
-    <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
     <div className="min-h-screen flex flex-col items-center justify-center bg-light text-gray-700 p-6">
       <h1 className="text-5xl font-bold mb-4 text-center">
         Visualizing AI <span className="text-color">Concepts</span>
@@ -31,6 +22,5 @@ export default function LandingPage() {
         </Link>
       </nav>
     </div>
-    </>
   );
 }

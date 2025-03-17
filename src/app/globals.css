@@ -32,3 +32,11 @@ body {
 .bg-dark {
   background-color: #ca5039;
 }
+
+@keyframes growWidth {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.animate-progress {
+  animation: growWidth 800ms ease-out forwards;
+}
